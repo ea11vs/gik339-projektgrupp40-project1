@@ -1,10 +1,10 @@
 /* Importera npm-paket sqlite3 med hjälp av require() och lagrar i variabeln sqlite */
-const sqlite = require('sqlite3').verbose();
+const sqlite = require("sqlite3").verbose();
 /* Skapar ny koppling till databas-fil som skapades tidigare. */
-const db = new sqlite.Database('./gik339.db');
+const db = new sqlite.Database("./gik339.db");
 
 /* Importerar npm-paket express och lagrar i variabeln express */
-const express = require('express');
+const express = require("express");
 /* Skapar server med hjälp av express */
 const server = express();
 
@@ -16,9 +16,9 @@ server
   .use(express.urlencoded({ extended: false }))
   .use((req, res, next) => {
     /* Headers för alla förfrågningar. Hanterar regler för CORS (vilka klienter som får anropa vår server och hur.) */
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', '*');
-    res.header('Access-Control-Allow-Methods', '*');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    res.header("Access-Control-Allow-Methods", "*");
     /* Säger åt servern att fortsätta processa förfrågan */
     next();
   });
@@ -26,13 +26,13 @@ server
 /* Startar servern på port 3000 */
 server.listen(3000, () => {
   /* Meddelande för feedback att servern körs */
-  console.log('Server running on http://localhost:3000');
+  console.log("Server running on http://localhost:3000");
 });
 
 /* Hantering av GET-requests till endpointen /users */
-server.get('/users', (req, res) => {
+server.get("/cars", (req, res) => {
   /* sql-query för att hämta alla users ur databasen. */
-  const sql = 'SELECT * FROM users';
+  const sql = "SELECT * FROM cars";
   /* Anrop till db-objektets funktion .all som används till att hämta upp rader ur en tabell */
   db.all(sql, (err, rows) => {
     /* Callbackfunktionen har parametern err för att lagra eventuella fel */
@@ -46,10 +46,10 @@ server.get('/users', (req, res) => {
   });
 });
 
-server.get('/users/:id', (req, res) => {
+server.get("/cars/:id", (req, res) => {
   const id = req.params.id;
 
-  const sql = `SELECT * FROM users WHERE id=${id}`;
+  const sql = `SELECT * FROM cars WHERE id=${id}`;
 
   db.all(sql, (err, rows) => {
     if (err) {
@@ -60,60 +60,60 @@ server.get('/users/:id', (req, res) => {
   });
 });
 
-server.post('/users', (req, res) => {
-  const user = req.body;
-  const sql = `INSERT INTO users(firstName, lastName, username, color) VALUES (?,?,?,?)`;
+server.post("/cars", (req, res) => {
+  const car = req.body;
+  const sql = `INSERT INTO cars(regnr, marke, model, color) VALUES (?,?,?,?)`;
 
-  db.run(sql, Object.values(user), (err) => {
+  db.run(sql, Object.values(car), (err) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
     } else {
-      res.send('Användaren sparades');
+      res.send("Bilen sparades");
     }
   });
 });
 
-server.put('/users', (req, res) => {
+server.put("/cars", (req, res) => {
   const bodyData = req.body;
 
   const id = bodyData.id;
-  const user = {
-    firstName: bodyData.firstName,
-    lastName: bodyData.lastName,
-    username: bodyData.username,
-    color: bodyData.color
+  const car = {
+    regnr: bodyData.regnr,
+    marke: bodyData.marke,
+    model: bodyData.model,
+    color: bodyData.color,
   };
 
-  let updateString = '';
-  const columnsArray = Object.keys(user);
+  let updateString = "";
+  const columnsArray = Object.keys(car);
   columnsArray.forEach((column, i) => {
-    updateString += `${column}="${user[column]}"`;
-    if (i !== columnsArray.length - 1) updateString += ',';
+    updateString += `${column}="${car[column]}"`;
+    if (i !== columnsArray.length - 1) updateString += ",";
   });
-  const sql = `UPDATE users SET ${updateString} WHERE id=${id}`;
+  const sql = `UPDATE cars SET ${updateString} WHERE id=${id}`;
 
   db.run(sql, (err) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
     } else {
-      res.send('Användaren uppdaterades');
+      res.send("Bil uppdaterades");
     }
   });
   //UPDATE users SET firstName="Mikaela",lastName="Hedberg" WHERE id=1
 });
 
-server.delete('/users/:id', (req, res) => {
+server.delete("/cars/:id", (req, res) => {
   const id = req.params.id;
-  const sql = `DELETE FROM users WHERE id = ${id}`;
+  const sql = `DELETE FROM cars WHERE id = ${id}`;
 
   db.run(sql, (err) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
     } else {
-      res.send('Användaren borttagen');
+      res.send("Bil borttagen");
     }
   });
 });
