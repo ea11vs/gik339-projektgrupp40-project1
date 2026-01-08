@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS cars;
-CREATE TABLE IF NOT EXISTS cars
-  id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT
+CREATE TABLE IF NOT EXISTS cars (
+  id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT /* eventuellt lär ändra på varchar för att anpassa längden i framtiden.*/ 
   ,regnr VARCHAR(8) NOT NULL
   ,marke  VARCHAR(9) NOT NULL
   ,model  VARCHAR(16) NOT NULL
@@ -14,7 +14,7 @@ INSERT INTO cars(id,regnr,marke,model,color) VALUES (5,'PNO336','TESLA','MODEL Y
 INSERT INTO cars(id,regnr,marke,model,color) VALUES (6,'JMF62A','BMW','3-SERIE','red');
 INSERT INTO cars(id,regnr,marke,model,color) VALUES (7,'XBT99K','AUDI','Q4 E-TRON','yellow');
 INSERT INTO cars(id,regnr,marke,model,color) VALUES (8,'RCD14W','MERCEDES-BENZ','GLC','green');
-INSERT INTO cars(id,regnr,marke,model,color) VALUES (9,'YHN28P','SKODA' 'ENYAQ','yellow');
+INSERT INTO cars(id,regnr,marke,model,color) VALUES (9,'YHN28P','SKODA', 'ENYAQ','yellow');
 INSERT INTO cars(id,regnr,marke,model,color) VALUES (10,'ZSE41M','PEUGEOT','208','yellow');
 
 

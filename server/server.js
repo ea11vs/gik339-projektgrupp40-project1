@@ -63,8 +63,8 @@ server.get("/cars/:id", (req, res) => {
 server.post("/cars", (req, res) => {
   const car = req.body;
   const sql = `INSERT INTO cars(regnr, marke, model, color) VALUES (?,?,?,?)`;
-
-  db.run(sql, Object.values(car), (err) => {
+  const params = [car.regnr, car.marke, car.model, car.color];
+  db.run(sql, params, (err) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
@@ -106,9 +106,9 @@ server.put("/cars", (req, res) => {
 
 server.delete("/cars/:id", (req, res) => {
   const id = req.params.id;
-  const sql = `DELETE FROM cars WHERE id = ${id}`;
+  const sql = `DELETE FROM cars WHERE id = ?`;
 
-  db.run(sql, (err) => {
+  db.run(sql, [id], (err) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
