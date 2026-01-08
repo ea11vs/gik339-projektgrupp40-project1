@@ -13,7 +13,7 @@ function fetchData() {
         <li
           class="bg-${car.color}-200 basis-1/4 text-${car.color}-900 p-2 rounded-md border-2 border-${car.color}-400 flex flex-col justify-between">
           <h3>${car.regnr}</h3>
-          <p>${car.make} ${car.model}</p>
+          <p>${car.marke} ${car.model}</p>
           <div>
             <button
               class="border border-${car.color}-300 hover:bg-white/100 rounded-md bg-white/50 p-1 text-sm mt-2" onclick="setCurrentCar(${car.id})">
@@ -39,7 +39,7 @@ function setCurrentCar(id) {
     .then((result) => result.json())
     .then((car) => {
       carForm.regnr.value = car.regnr;
-      carForm.make.value = car.make;
+      carForm.marke.value = car.marke;
       carForm.model.value = car.model;
       carForm.color.value = car.color;
 
@@ -57,12 +57,12 @@ function handleSubmit(e) {
   e.preventDefault();
   const serverCarObject = {
     regnr: "",
-    make: "",
+    marke: "",
     model: "",
     color: "",
   };
   serverCarObject.regnr = carForm.regnr.value;
-  serverCarObject.make = carForm.make.value;
+  serverCarObject.marke = carForm.marke.value;
   serverCarObject.model = carForm.model.value;
   serverCarObject.color = carForm.color.value;
 
