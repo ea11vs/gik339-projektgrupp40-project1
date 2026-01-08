@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS cars;
 CREATE TABLE IF NOT EXISTS cars (
-  id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT /* eventuellt lär ändra på varchar för att anpassa längden i framtiden.*/ 
+  id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT
   ,regnr VARCHAR(8) NOT NULL
   ,marke  VARCHAR(9) NOT NULL
   ,model  VARCHAR(16) NOT NULL
