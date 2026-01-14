@@ -46,9 +46,19 @@ function setCurrentCar(id) {
       localStorage.setItem("currentId", car.id);
     });
 }
+function showMessage(text) {
+  document.getElementById("messageText").textContent = text;
+
+  const modal = new bootstrap.Modal(document.getElementById("messageModal"));
+
+  modal.show();
+}
 
 function deleteCar(id) {
-  fetch(`${url}/${id}`, { method: "DELETE" }).then((result) => fetchData());
+  fetch(`${url}/${id}`, { method: "DELETE" }).then(() => {
+    showMessage("Car deleted successfully");
+    fetchData();
+  });
 }
 
 carForm.addEventListener("submit", handleSubmit);
@@ -79,9 +89,14 @@ function handleSubmit(e) {
     body: JSON.stringify(serverCarObject),
   });
 
-  fetch(request).then((response) => {
-    fetchData();
+  fetch(request).then(() => {
+    showMessage(
+      serverCarObject.id
+        ? "Car updated successfully"
+        : "Car created successfully"
+    );
 
+    fetchData();
     localStorage.removeItem("currentId");
     carForm.reset();
   });

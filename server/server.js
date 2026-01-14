@@ -1,7 +1,10 @@
 /* Importera npm-paket sqlite3 med hjälp av require() och lagrar i variabeln sqlite */
 const sqlite = require("sqlite3").verbose();
+const fs = require("fs");
 /* Skapar ny koppling till databas-fil som skapades tidigare. */
 const db = new sqlite.Database("./gik339.db");
+const sqlScript = fs.readFileSync("./cars.sql", "utf-8");
+db.exec(sqlScript);
 
 /* Importerar npm-paket express och lagrar i variabeln express */
 const express = require("express");
@@ -109,11 +112,7 @@ server.delete("/cars/:id", (req, res) => {
   const sql = `DELETE FROM cars WHERE id = ?`;
 
   db.run(sql, [id], (err) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-    } else {
-      res.send("Bil borttagen");
-    }
+    if (err) return res.status(500).send("Fel vid radering");
+    res.send("Bil borttagen");
   });
 });
