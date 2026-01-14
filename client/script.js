@@ -11,9 +11,9 @@ function fetchData() {
         cars.forEach((car) => {
           html += `
         <li
-          class="bg-${car.color}-200 basis-1/4 text-${car.color}-900 p-2 rounded-md border-2 border-${car.color}-400 flex flex-col justify-between">
-          <h3>${car.regnr}</h3>
-          <p>${car.marke} ${car.model}</p>
+          class="bg-${car.color}-200 basis-1/4 text-${car.color}-900 p-2 rounded-md border-2 border-${car.color}-400 flex-col justify-between">
+          <h3 class="text-xl font-mono">${car.regnr}</h3>
+          <p class="text-sm font-bold">${car.marke} ${car.model}</p>
           <div>
             <button
               class="border border-${car.color}-300 hover:bg-white/100 rounded-md bg-white/50 p-1 text-sm mt-2" onclick="setCurrentCar(${car.id})">
