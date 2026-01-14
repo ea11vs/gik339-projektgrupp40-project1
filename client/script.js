@@ -7,7 +7,7 @@ function fetchData() {
     .then((result) => result.json())
     .then((cars) => {
       if (cars.length > 0) {
-        let html = `<ul class="w-3/4 my-3 mx-auto flex flex-wrap gap-2 justify-center">`;
+        let html = `<ul class="w-3/4 my-2 mx-auto flex flex-wrap gap-2 justify-center">`;
         cars.forEach((car) => {
           html += `
         <li

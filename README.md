@@ -1,1 +1,1 @@
-Det var ett problem med github så jag laddade ner en zip variant av den och efter att ha uppdaterat den så laddade jag in repositoryt och ersatte den med filerna jag jobbade med på datorn vilket förklarar den höga mängden insertions.
+Det var ett problem med github så jag laddade ner en zip variant av projektet och uppdaterade den efteråt så laddade jag in repositoryt och ersatte den med filerna jag jobbade med på datorn vilket förklarar den höga mängden insertions.

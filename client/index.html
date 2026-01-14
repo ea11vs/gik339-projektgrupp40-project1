@@ -9,22 +9,22 @@
     <title>CarRegister</title>
   </head>
   <body
-    class="min-h-[100vh] bg-gradient-to-b from-gray-900 to-gray-700 text-white"
+    class="min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 text-white"
   >
     <header class="mt-10 text-center">
       <h1 class="text-3xl font-bold tracking-wider">CarRegister</h1>
     </header>
     <main class="mt-10">
-      <div
-        class="w-[55rem] mx-auto mt-8 bg-white/10 p-6 rounded-lg shadow-xl backdrop-blur-sm"
-      >
+      <div class="w-[40rem] mx-auto p-6 rounded-lg">
         <form id="carForm">
-          <div class="form-control my-4 mx-auto flex w-3/4 items-center">
-            <label for="regnr" class="mr-4 text-xl w-40 font-semibold"
+          <div class="form-control my-4 mx-auto max-w-[40rem] items-center">
+            <label
+              for="regnr"
+              class="mr-4 text-lg w-48 font-semibold whitespace-nowrap"
               >Registration number</label
             >
             <input
-              class="text-slate-900 p-2 flex-1 rounded-md border-none focus:ring-2 focus:ring-blue-500 outline-none"
+              class="p-1 rounded-md border-none outline-none text-sm"
               type="text"
               name="regnr"
               placeholder="e.g. ABC 123"
@@ -32,12 +32,14 @@
             />
           </div>
 
-          <div class="form-control my-4 mx-auto flex w-3/4 items-center">
-            <label for="make" class="mr-4 text-xl w-40 font-semibold"
+          <div class="form-control my-4 mx-auto max-w-[40rem] items-center">
+            <label
+              for="make"
+              class="mr-4 text-lg w-48 font-semibold whitespace-nowrap"
               >Make</label
             >
             <input
-              class="text-slate-900 p-2 flex-1 rounded-md border-none focus:ring-2 focus:ring-blue-500 outline-none"
+              class="p-1 rounded-md border-none outline-none text-sm"
               type="text"
               name="marke"
               placeholder="e.g. Volvo"
@@ -45,12 +47,14 @@
             />
           </div>
 
-          <div class="form-control my-4 mx-auto flex w-3/4 items-center">
-            <label for="model" class="mr-4 text-xl w-40 font-semibold"
+          <div class="form-control my-4 mx-auto max-w-[40rem] items-center">
+            <label
+              for="model"
+              class="mr-4 text-lg w-48 font-semibold whitespace-nowrap"
               >Model</label
             >
             <input
-              class="text-slate-900 p-2 flex-1 rounded-md border-none focus:ring-2 focus:ring-blue-500 outline-none"
+              class="p-1 rounded-md border-none outline-none text-sm"
               type="text"
               name="model"
               placeholder="e.g. V70"
@@ -58,12 +62,14 @@
             />
           </div>
 
-          <div class="form-control my-4 mx-auto flex w-3/4 items-center">
-            <label for="color" class="mr-4 text-xl w-40 font-semibold"
+          <div class="form-control my-4 mx-auto max-w-[40rem] items-center">
+            <label
+              for="color"
+              class="mr-4 text-lg w-48 font-semibold whitespace-nowrap"
               >Color</label
             >
             <select
-              class="bg-white text-slate-900 p-2 flex-1 rounded-md cursor-pointer"
+              class="bg-white p-1 rounded-md cursor-pointer text-sm"
               name="color"
             >
               <option value="gray">Gray</option>
@@ -74,9 +80,7 @@
             </select>
           </div>
 
-          <div
-            class="form-control my-6 mx-auto flex w-3/4 items-center justify-end gap-4"
-          >
+          <div>
             <button
               class="px-6 py-2 bg-slate-600 text-white rounded-md hover:bg-slate-500 transition-colors font-semibold"
               type="reset"
